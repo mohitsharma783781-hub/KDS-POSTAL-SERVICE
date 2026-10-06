@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDS Postal Service | Door-to-Door Courier & Cargo Aggregator</title>
+    <meta name="description" content="KDS Postal Service Enterprise Multi-Courier Logistics. Connect 12+ top courier partners in 1 click. Compare live rates, automate doorstep pickups, cut RTOs by 40%.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .animate-marquee-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(8px); }
+        }
+        .animate-float-slow {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+        .animate-float-reverse {
+            animation: floatReverse 4.5s ease-in-out infinite;
+        }
+        @keyframes driveTruckHighway {
+            0% {
+                transform: translateX(-450px);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+        .animate-truck-highway {
+            animation: driveTruckHighway 10s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 antialiased flex flex-col min-h-screen">
+
+    <!-- 0. LIVE ACTIVITY TICKER TOP BANNER -->
+    <div id="ticker-bar" class="bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800 transition-all duration-300 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2 overflow-hidden">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+                <span id="ticker-text" class="font-semibold text-slate-200 truncate">
+                    ⚡ AWB #DELHI987612 booked from Delhi ➔ Mumbai via Delhivery Air • 2 mins ago
+                </span>
+            </div>
+            <button onclick="document.getElementById('ticker-bar').style.display='none'" class="text-slate-400 hover:text-white font-bold text-xs">✕</button>
+        </div>
+    </div>
+
+
+    <!-- 1. PUBLIC HEADER (NO LOGIN / SIGNUP) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-18">
+                
+                <!-- Brand Logo: KDS Postal Service -->
+                <a href="#home" class="flex items-center gap-2.5 text-decoration-none group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-700 to-sky-600 text-white flex items-center justify-center font-black text-xs shadow-md shadow-blue-500/30 group-hover:scale-105 transition-transform tracking-tighter">
+                        KDS
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-black tracking-tight text-slate-900 leading-none">
+                            KDS <span class="text-blue-600">Postal</span> Service
+                        </span>
+                        <span class="text-[9px] uppercase tracking-widest font-extrabold text-slate-400 mt-0.5">
+                            Courier & Cargo Aggregator
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-7">
+                    <a href="#why-choose-us" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Features</a>
+                    <a href="#calculator" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Rate & Savings</a>
+                    <a href="#pincode" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Pincode Reach</a>
+                    <a href="#carriers" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Carriers</a>
+                    <a href="#faq" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">FAQ</a>
+                </nav>
+
+                <!-- Header Actions (Get Quote & WhatsApp CTA) -->
+                <div class="hidden lg:flex items-center space-x-3">
+                    <a href="#calculator" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all">
+                        Rate Calculator
+                    </a>
+                    <a href="https://wa.me/919216111156?text=Hello%20KDS%20Postal%20Service,%20I%20would%20like%20to%20get%20a%20shipping%20quote" target="_blank" rel="noopener" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-600/20 transition-all flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.116 4.075 4.148-1.088z"/>
+                        </svg>
+                        WhatsApp Quote
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="open-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
+            <a href="#why-choose-us" class="block px-3 py-2 rounded-lg font-bold text-slate-700 hover:bg-slate-50">Features</a>
+            <a href="#calculator" class="block px-3 py-2 rounded-lg font-bold text-blue-600 bg-blue-50">Rate & Savings</a>
+            <a href="#pincode" class="block px-3 py-2 rounded-lg font-bold text-slate-700 hover:bg-slate-50">Pincode Reach</a>
+            <a href="#carriers" class="block px-3 py-2 rounded-lg font-bold text-slate-700 hover:bg-slate-50">Carriers</a>
+            <a href="#faq" class="block px-3 py-2 rounded-lg font-bold text-slate-700 hover:bg-slate-50">FAQ</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="#calculator" class="w-full text-center py-2.5 rounded-xl font-bold text-white bg-blue-600">Get Instant Quote</a>
+                <a href="https://wa.me/919216111156?text=Hello%20KDS%20Postal%20Service,%20I%20would%20like%20to%20get%20a%20quote" target="_blank" class="w-full text-center py-2.5 rounded-xl font-bold text-emerald-700 bg-emerald-50 border border-emerald-200">WhatsApp Support</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- 2. ENTERPRISE HERO SECTION -->
+    <section id="home" class="relative bg-gradient-to-b from-sky-50/70 via-white to-white py-12 md:py-16 border-b border-slate-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Column: Headline & Direct AWB Search -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    
+                    <!-- Badge Bar -->
+                    <div class="inline-flex items-center gap-2 flex-wrap justify-center lg:justify-start">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                            ⚡ 12+ Courier Networks • 29,000+ Active Pincodes
+                        </span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
+                        Ship Smarter. <br class="hidden sm:block"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-600 to-indigo-600">
+                            Save 40% On Freight.
+                        </span>
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                        Connect 12+ top courier networks in 1 click, compare live rates, and automate doorstep dispatches across India.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="pt-1 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                        <a href="#calculator" class="w-full sm:w-auto px-6 py-3.5 rounded-xl font-extrabold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/30 text-sm transition-all text-center">
+                            Calculate Shipping Rate ↓
+                        </a>
+                        <a href="https://wa.me/919216111156?text=Hello%20KDS%20Postal%20Service,%20I%20need%20a%20quick%20quote" target="_blank" rel="noopener" class="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 text-sm text-center flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-emerald-500 fill-current" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.116 4.075 4.148-1.088z"/>
+                            </svg>
+                            WhatsApp Quick Quote
+                        </a>
+                    </div>
+
+                    <!-- Direct Track Shipment Box -->
+                    <div class="bg-white rounded-2xl border-2 border-sky-200 p-4 sm:p-5 shadow-xl shadow-sky-100/60 text-left space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black uppercase tracking-wider text-sky-700">
+                                🔍 Direct Track Shipment
+                            </span>
+                            <span class="text-[11px] font-bold text-slate-500">Live Timeline Drawer</span>
+                        </div>
+
+                        <form id="track-form" class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="track-input" placeholder="Enter AWB or Tracking Number..." value="DELHI987654" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            <button type="submit" class="px-5 py-2.5 rounded-xl font-extrabold text-white bg-sky-600 hover:bg-sky-700 text-sm shadow-md transition-all">
+                                Track Shipment
+                            </button>
+                        </form>
+
+                        <!-- Demo AWBs -->
+                        <div class="flex items-center gap-2 flex-wrap text-xs">
+                            <span class="font-bold text-slate-500">Try Demo AWBs:</span>
+                            <button type="button" onclick="setDemoAwb('DELHI987654')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-blue-50 text-blue-600 font-bold border border-slate-200">DELHI987654</button>
+                            <button type="button" onclick="setDemoAwb('BLUEDART4321')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-blue-50 text-blue-600 font-bold border border-slate-200">BLUEDART4321</button>
+                            <button type="button" onclick="setDemoAwb('SHADOW1122')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-blue-50 text-blue-600 font-bold border border-slate-200">SHADOW1122</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Clean 3D Enterprise Logistics Showcase -->
+                <div class="lg:col-span-5 relative flex flex-col items-center justify-center py-4">
+                    
+                    <!-- Glow Backdrop -->
+                    <div class="absolute w-80 h-80 bg-blue-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+                    <!-- Floating Badge 1: SLA (Positioned cleanly outside corners) -->
+                    <div class="animate-float-slow absolute -top-4 -left-4 z-20 bg-white/95 backdrop-blur-md border border-blue-100 rounded-2xl p-3 px-4 shadow-xl flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-sky-500 text-white flex items-center justify-center font-black text-sm shadow-md shadow-blue-500/20">
+                            ⚡
+                        </div>
+                        <div>
+                            <div class="text-xs font-extrabold text-slate-900">99.4% On-Time SLA</div>
+                            <div class="text-[10px] font-bold text-blue-600">Guaranteed Air Express</div>
+                        </div>
+                    </div>
+
+                    <!-- Main 3D Artwork Visual Container -->
+                    <div class="relative z-10 w-full max-w-md bg-white p-3 rounded-3xl border border-slate-200 shadow-2xl shadow-blue-900/10 hover:shadow-blue-900/15 transition-all group">
+                        <img src="images/hero_3d_logistics_v2.jpg" alt="KDS Postal Service Enterprise Multi-Courier Hub" class="w-full h-auto object-cover rounded-2xl">
+                        
+                        <!-- Sub-caption Pill Bar -->
+                        <div class="mt-3 px-3.5 py-2.5 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-between text-xs font-bold">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="text-slate-800">12+ Courier Networks Integrated</span>
+                            </div>
+                            <span class="text-[11px] font-extrabold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-lg border border-blue-100">Live AI Allocation</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 2: Pincodes -->
+                    <div class="animate-float-reverse absolute -bottom-4 -right-4 z-20 bg-white/95 backdrop-blur-md border border-emerald-100 rounded-2xl p-3 px-4 shadow-xl flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center font-black text-sm shadow-md shadow-emerald-500/20">
+                            📍
+                        </div>
+                        <div>
+                            <div class="text-xs font-extrabold text-slate-900">29,000+ Active Pincodes</div>
+                            <div class="text-[10px] font-bold text-emerald-600">Pan-India Doorstep Reach</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 2.3 FULL-WIDTH ANIMATED TRUCK HIGHWAY STRIP -->
+    <div class="w-full bg-gradient-to-r from-sky-50/50 via-blue-50/40 to-sky-50/50 border-y border-slate-100 py-3 relative overflow-hidden my-2">
+        <div class="max-w-7xl mx-auto px-4 relative h-24 sm:h-32 md:h-36 flex items-center">
+            
+            <!-- Driving Truck Moving Across Screen -->
+            <div class="w-full absolute bottom-0 left-0 pointer-events-none overflow-hidden h-full flex items-end">
+                <div class="animate-truck-highway flex items-center">
+                    <img src="images/kds_truck_transparent.png" alt="KDS Postal Service Express Truck" class="h-24 sm:h-32 md:h-36 w-auto object-contain filter drop-shadow-2xl">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 2.5 DELIVERY NETWORK MARQUEE BANNER WITH ACTUAL LOGOS -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="bg-gradient-to-r from-blue-50 via-sky-50 to-blue-100 border border-sky-200 rounded-2xl p-4 shadow-md overflow-hidden relative flex items-center gap-5">
+            
+            <div class="flex flex-col pr-5 border-r border-slate-300 flex-shrink-0 z-10 bg-blue-50/90 py-1">
+                <span class="text-lg font-black text-slate-900 leading-none tracking-tight">Delivery</span>
+                <span class="text-lg font-black text-sky-600 leading-none tracking-tight">Network</span>
+            </div>
+
+            <!-- Marquee Container -->
+            <div class="flex-1 overflow-hidden relative">
+                <!-- Fade Edges -->
+                <div class="absolute top-0 left-0 bottom-0 w-10 bg-gradient-to-r from-blue-50 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute top-0 right-0 bottom-0 w-10 bg-gradient-to-l from-blue-100 to-transparent z-10 pointer-events-none"></div>
+
+                <div class="animate-marquee-track space-x-4 items-center">
+                    
+                    <!-- Real Logo 1: DP WORLD -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[140px] flex items-center justify-center">
+                        <img src="images/carriers/dpworld.png" alt="DP WORLD" class="h-9 w-auto object-contain mix-blend-multiply">
+                    </div>
+
+                    <!-- Real Logo 2: DELHIVERY -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[150px] flex items-center justify-center">
+                        <img src="images/carriers/delhivery.png" alt="DELHIVERY" class="h-8 w-auto object-contain mix-blend-multiply">
+                    </div>
+
+                    <!-- Logo 3: ekart -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-5 py-2 h-14 min-w-[130px] flex items-center justify-center">
+                        <span class="text-lg font-black text-amber-500 italic">e</span><span class="text-base font-black text-blue-900">kart</span>
+                    </div>
+
+                    <!-- Real Logo 4: XPRESSBEES -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[150px] flex items-center justify-center">
+                        <img src="images/carriers/xpressbees.png" alt="XPRESSBEES" class="h-8 w-auto object-contain mix-blend-multiply">
+                    </div>
+
+                    <!-- Logo 5: SHADOWFAX -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-5 py-2 h-14 min-w-[140px] flex items-center justify-center">
+                        <span class="text-sm font-black text-emerald-600 tracking-wider">SHADOWFAX</span>
+                    </div>
+
+                    <!-- Real Logo 6: DTDC -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[140px] flex items-center justify-center">
+                        <img src="images/carriers/dtdc.png" alt="DTDC" class="h-9 w-auto object-contain mix-blend-multiply">
+                    </div>
+
+                    <!-- Logo 7: ECOM EXPRESS -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-5 py-2 h-14 min-w-[150px] flex items-center justify-center">
+                        <span class="text-xs font-black text-green-700 tracking-wider">ECOM EXPRESS</span>
+                    </div>
+
+                    <!-- Real Logo 8: BLUE DART -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[150px] flex items-center justify-center">
+                        <img src="images/carriers/bluedart.png" alt="BLUE DART" class="h-9 w-auto object-contain mix-blend-multiply">
+                    </div>
+
+                    <!-- Logo 9: APML -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-5 py-2 h-14 min-w-[120px] flex items-center justify-center gap-1.5">
+                        <span class="w-5 h-5 bg-red-600 text-white rounded flex items-center justify-center text-[10px] font-black">★</span>
+                        <span class="text-sm font-black text-red-900 tracking-wider">APML</span>
+                    </div>
+
+                    <!-- Logo 10: Trackon -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-5 py-2 h-14 min-w-[130px] flex items-center justify-center">
+                        <span class="text-sm font-black text-red-600 italic">Trackon ►</span>
+                    </div>
+
+                    <!-- DUPLICATES FOR INFINITE LOOPING -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[140px] flex items-center justify-center">
+                        <img src="images/carriers/dpworld.png" alt="DP WORLD" class="h-9 w-auto object-contain mix-blend-multiply">
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[150px] flex items-center justify-center">
+                        <img src="images/carriers/delhivery.png" alt="DELHIVERY" class="h-8 w-auto object-contain mix-blend-multiply">
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[150px] flex items-center justify-center">
+                        <img src="images/carriers/xpressbees.png" alt="XPRESSBEES" class="h-8 w-auto object-contain mix-blend-multiply">
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[140px] flex items-center justify-center">
+                        <img src="images/carriers/dtdc.png" alt="DTDC" class="h-9 w-auto object-contain mix-blend-multiply">
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-2 h-14 min-w-[150px] flex items-center justify-center">
+                        <img src="images/carriers/bluedart.png" alt="BLUE DART" class="h-9 w-auto object-contain mix-blend-multiply">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 2.8 WHY ONLINE SELLERS CHOOSE KDS POSTAL SERVICE SECTION -->
+    <section id="why-choose-us" class="py-14 md:py-20 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-12 space-y-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold">
+                    <span>✨</span> Trusted By 5,000+ D2C Brands & Sellers
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+                    Why Businesses & Sellers Choose KDS Postal Service
+                </h2>
+                <p class="text-slate-600 text-base max-w-2xl mx-auto font-medium">
+                    Streamline your e-commerce logistics with automated multi-courier routing, instant COD payouts, and zero setup fees.
+                </p>
+            </div>
+
+            <!-- Grid: Left Image with 3D Badges | Right 3 Feature Cards -->
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Image & Floating 3D Badges (7 Cols) -->
+                <div class="lg:col-span-6 relative flex justify-center items-center py-6">
+                    
+                    <!-- Radial Glow Backdrop -->
+                    <div class="absolute w-80 h-80 bg-blue-600/15 rounded-full filter blur-3xl pointer-events-none"></div>
+
+                    <!-- Main Image Container -->
+                    <div class="relative z-10 w-full max-w-xl flex justify-center">
+                        <img src="images/seller_woman_laptop_transparent_4k.png" alt="KDS Postal Service Seller Portal" class="w-full max-h-[580px] object-contain drop-shadow-2xl transform scale-110">
+
+                        <!-- Floating 3D Badge 1: Top Left -->
+                        <div class="absolute -top-4 -left-4 z-20 bg-white rounded-2xl p-3 px-4 shadow-xl border border-slate-200 flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black text-lg">
+                                📦
+                            </div>
+                            <div>
+                                <div class="text-xs font-extrabold text-slate-900">Multi-Courier</div>
+                                <div class="text-[10px] font-bold text-slate-500">12+ Partners Active</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating 3D Badge 2: Top Right -->
+                        <div class="absolute -top-3 -right-2 z-20 bg-white rounded-full w-12 h-12 shadow-xl border border-rose-200 flex items-center justify-center text-xl">
+                            ❤️
+                        </div>
+
+                        <!-- Floating 3D Badge 3: Bottom Left -->
+                        <div class="absolute -bottom-4 -left-3 z-20 bg-white rounded-2xl p-3 px-4 shadow-xl border border-emerald-200 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 font-black flex items-center justify-center text-sm">
+                                ₹
+                            </div>
+                            <div>
+                                <div class="text-xs font-extrabold text-slate-900">T+1 COD Remittance</div>
+                                <div class="text-[10px] font-bold text-emerald-600">Daily Payouts</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating 3D Badge 4: Bottom Right -->
+                        <div class="absolute -bottom-3 -right-3 z-20 bg-white rounded-2xl p-3 px-4 shadow-xl border border-sky-200 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 font-black flex items-center justify-center text-sm">
+                                🚚
+                            </div>
+                            <div>
+                                <div class="text-xs font-extrabold text-slate-900">29,000+ Pincodes</div>
+                                <div class="text-[10px] font-bold text-sky-600">Pan-India Reach</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right 3 Feature Cards (6 Cols) -->
+                <div class="lg:col-span-6 space-y-5">
+                    
+                    <!-- Feature Card 01 -->
+                    <div class="bg-blue-50/80 rounded-2xl p-6 border border-blue-200 shadow-sm space-y-2 hover:shadow-md transition-all">
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-black text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">01</span>
+                            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-extrabold text-slate-900">One Place, Many Couriers</h3>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            Use many courier partners from one KDS Postal Service account. Compare live freight rates, check pincode coverage, book pickups, and track packages without jumping between different courier websites.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 02 -->
+                    <div class="bg-emerald-50/80 rounded-2xl p-6 border border-emerald-200 shadow-sm space-y-2 hover:shadow-md transition-all">
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-black text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md">02</span>
+                            <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-extrabold text-slate-900">COD & Failed Delivery Help (NDR)</h3>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            See your COD money clearly with automated T+1 payouts and fix failed delivery attempts early. That means more successful orders, fewer RTO returns, and zero money stuck in shipping.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 03 -->
+                    <div class="bg-purple-50/80 rounded-2xl p-6 border border-purple-200 shadow-sm space-y-2 hover:shadow-md transition-all">
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-black text-purple-700 bg-purple-100 px-2.5 py-1 rounded-md">03</span>
+                            <div class="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center font-black">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-extrabold text-slate-900">Easy Store & API Connect</h3>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            Link Shopify, WooCommerce, or your custom website via REST API. Create bulk shipping labels, book doorstep pickups, and share live tracking updates automatically as your order count grows.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 3. RATE & SAVINGS CALCULATOR SECTION -->
+    <section id="calculator" class="py-12 md:py-16 bg-white border-t border-slate-100 scroll-mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                    Smart Shipping Rate & Savings
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+                    Compare Rates & Calculate Freight Savings
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Test live courier partner pricing or calculate your total monthly savings with automated aggregator rates.
+                </p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center mb-8">
+                <div class="bg-slate-100 p-1.5 rounded-2xl border border-slate-200 inline-flex gap-2">
+                    <button id="tab-rates-btn" onclick="switchCalcTab('rates')" class="px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all bg-white text-blue-600 shadow-md">
+                        📊 Live Rate Comparison
+                    </button>
+                    <button id="tab-savings-btn" onclick="switchCalcTab('savings')" class="px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all text-slate-600 hover:text-slate-900">
+                        💰 Monthly Savings Calculator
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 1: LIVE RATE COMPARISON -->
+            <div id="tab-rates-content" class="max-w-5xl mx-auto grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Input Form -->
+                <div class="lg:col-span-5 bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-4">
+                    <h3 class="text-base font-extrabold text-slate-900 border-b border-slate-200 pb-3">Shipment Parameters</h3>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Pickup Pincode</label>
+                        <input type="text" id="calc-pickup" value="110001" oninput="updateLiveRates()" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Destination Pincode</label>
+                        <input type="text" id="calc-dest" value="400001" oninput="updateLiveRates()" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Package Weight: <span id="weight-val" class="text-blue-600 font-extrabold">0.5 kg</span></label>
+                        <input type="range" id="calc-weight" min="0.5" max="20" step="0.5" value="0.5" oninput="updateLiveRates()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Payment Mode</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" id="pay-prepaid" onclick="setPayMode('prepaid')" class="py-2 rounded-xl text-xs font-extrabold border bg-blue-600 text-white border-blue-600">Prepaid</button>
+                            <button type="button" id="pay-cod" onclick="setPayMode('cod')" class="py-2 rounded-xl text-xs font-extrabold border bg-white text-slate-700 border-slate-300">Cash on Delivery</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Calculated Rates Output -->
+                <div class="lg:col-span-7 space-y-3">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-500 pb-1">
+                        <span>COURIER PARTNER</span>
+                        <span>SLA & RATE</span>
+                    </div>
+
+                    <!-- Rate Card 1 -->
+                    <div class="bg-white rounded-2xl p-4 border-2 border-emerald-400 shadow-md flex items-center justify-between">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-slate-900 text-sm">Delhivery Air Express</span>
+                                <span class="text-[10px] font-extrabold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">AI Best Value</span>
+                            </div>
+                            <div class="text-xs text-slate-500 font-medium">1-2 Days • Door Pickup Included</div>
+                        </div>
+                        <div class="text-right">
+                            <div id="rate-delhivery" class="text-xl font-black text-emerald-700">₹ 45.00</div>
+                            <div class="text-[10px] font-bold text-slate-400">GST extra</div>
+                        </div>
+                    </div>
+
+                    <!-- Rate Card 2 -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center justify-between">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-slate-900 text-sm">Blue Dart Priority Air</span>
+                                <span class="text-[10px] font-extrabold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Fastest SLA</span>
+                            </div>
+                            <div class="text-xs text-slate-500 font-medium">24 Hours Guaranteed</div>
+                        </div>
+                        <div class="text-right">
+                            <div id="rate-bluedart" class="text-xl font-black text-blue-700">₹ 68.00</div>
+                            <div class="text-[10px] font-bold text-slate-400">GST extra</div>
+                        </div>
+                    </div>
+
+                    <!-- Rate Card 3 -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center justify-between">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-slate-900 text-sm">Xpressbees Surface</span>
+                                <span class="text-[10px] font-extrabold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">Economy</span>
+                            </div>
+                            <div class="text-xs text-slate-500 font-medium">2-3 Days Heavy Freight</div>
+                        </div>
+                        <div class="text-right">
+                            <div id="rate-xpressbees" class="text-xl font-black text-purple-700">₹ 38.00</div>
+                            <div class="text-[10px] font-bold text-slate-400">GST extra</div>
+                        </div>
+                    </div>
+
+                    <!-- Rate Card 4 -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center justify-between">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-slate-900 text-sm">Shadowfax Local</span>
+                            </div>
+                            <div class="text-xs text-slate-500 font-medium">Same Day / 4 Hours</div>
+                        </div>
+                        <div class="text-right">
+                            <div id="rate-shadowfax" class="text-xl font-black text-slate-800">₹ 42.00</div>
+                            <div class="text-[10px] font-bold text-slate-400">GST extra</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 2: VOLUME SAVINGS CALCULATOR -->
+            <div id="tab-savings-content" class="hidden max-w-4xl mx-auto bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-6 md:p-10 shadow-2xl space-y-8">
+                <div class="text-center space-y-2">
+                    <h3 class="text-xl sm:text-2xl font-black text-white">Estimate Monthly Freight Savings</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm">Slide to your average monthly shipment volume to see how much you save using KDS Postal Service aggregated rates.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center text-sm font-extrabold">
+                        <span>Monthly Shipments:</span>
+                        <span id="vol-count" class="text-2xl font-black text-sky-400">1,500 Packages</span>
+                    </div>
+                    <input type="range" id="vol-slider" min="100" max="10000" step="100" value="1500" oninput="updateSavings()" class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-sky-400">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>100 Orders</span>
+                        <span>5,000 Orders</span>
+                        <span>10,000+ Orders</span>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 pt-4 border-t border-slate-700">
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 text-center space-y-1">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Estimated Monthly Savings</span>
+                        <div id="monthly-savings-val" class="text-3xl font-black text-emerald-400">₹ 27,750</div>
+                        <span class="text-[11px] text-slate-400">Based on ₹18.50 avg discount per order</span>
+                    </div>
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 text-center space-y-1">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Estimated Annual Savings</span>
+                        <div id="annual-savings-val" class="text-3xl font-black text-sky-400">₹ 3,33,000</div>
+                        <span class="text-[11px] text-slate-400">Annual bottom-line profit boost</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 4. PINCODE REACH & SERVICEABILITY CHECKER SECTION -->
+    <section id="pincode" class="py-12 md:py-16 bg-slate-50 border-t border-slate-100 scroll-mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                    Instant Coverage Checker
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                    Check Pincode Serviceability Across India
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Verify cash-on-delivery (COD) availability, Air & Surface delivery SLAs for any 6-digit Indian Pincode.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- Search Input -->
+                <form id="pincode-form" class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="pincode-input" maxlength="6" placeholder="Enter 6-digit Pincode (e.g. 110001, 400001, 560001)" value="110001" class="flex-1 px-4 py-3 rounded-xl border border-slate-300 font-extrabold text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <button type="submit" class="px-6 py-3 rounded-xl font-extrabold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md text-sm transition-all">
+                        Check Serviceability
+                    </button>
+                </form>
+
+                <!-- Search Result Card -->
+                <div id="pincode-card" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-md space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-black flex items-center justify-center text-sm">
+                                📍
+                            </div>
+                            <div>
+                                <h4 id="pin-location" class="text-base font-black text-slate-900">New Delhi (Pincode: 110001)</h4>
+                                <span id="pin-state" class="text-xs text-slate-500 font-bold">State: Delhi</span>
+                            </div>
+                        </div>
+                        <span id="pin-status" class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800">
+                            ✓ Serviceable (29,000+ Reach)
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-slate-400 font-bold uppercase block text-[10px]">COD Availability</span>
+                            <strong id="pin-cod" class="text-emerald-700 text-sm font-extrabold">Active (T+1 Remittance)</strong>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-slate-400 font-bold uppercase block text-[10px]">Air Express SLA</span>
+                            <strong id="pin-air" class="text-blue-700 text-sm font-extrabold">24-36 Hours</strong>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 col-span-2 sm:col-span-1">
+                            <span class="text-slate-400 font-bold uppercase block text-[10px]">Surface Cargo SLA</span>
+                            <strong id="pin-surface" class="text-purple-700 text-sm font-extrabold">48-72 Hours</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="text-xs font-bold text-slate-500 block mb-2">Active Courier Networks in this Pincode:</span>
+                        <div id="pin-carriers" class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold">Delhivery Air</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold">Blue Dart Priority</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold">Xpressbees</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold">Shadowfax</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold">Ecom Express</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 5. CARRIERS SHOWCASE SECTION -->
+    <section id="carriers" class="py-12 md:py-16 bg-white border-t border-slate-100 scroll-mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-black uppercase tracking-widest text-purple-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
+                    Partner Networks
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                    12+ Top Logistics Partners Integrated
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Automate dispatch routing across India's most trusted courier and air cargo companies.
+                </p>
+            </div>
+
+            <!-- Carrier Filter Buttons -->
+            <div class="flex justify-center mb-8 flex-wrap gap-2">
+                <button onclick="filterCarriers('all', this)" class="carrier-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-slate-900 text-white shadow-md transition-all">All Partners</button>
+                <button onclick="filterCarriers('air', this)" class="carrier-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">Air Express</button>
+                <button onclick="filterCarriers('surface', this)" class="carrier-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">Surface Cargo</button>
+                <button onclick="filterCarriers('local', this)" class="carrier-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">Hyperlocal</button>
+            </div>
+
+            <!-- Carrier Grid -->
+            <div id="carrier-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <!-- Cards injected dynamically via JS -->
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 6. FAQ ACCORDION SECTION -->
+    <section id="faq" class="py-12 md:py-16 bg-slate-50 border-t border-slate-100 scroll-mt-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-10 space-y-2">
+                <span class="text-xs font-black uppercase tracking-widest text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+                    Got Questions?
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+
+            <div class="space-y-3">
+                <!-- FAQ 1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-5 font-extrabold text-slate-900 text-sm flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span>What is KDS Postal Service multi-courier platform?</span>
+                        <span id="faq-icon-1" class="text-blue-600 font-black text-lg">+</span>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                        KDS Postal Service consolidates 12+ top logistics providers (Delhivery, Bluedart, Xpressbees, Shadowfax, etc.) into a single enterprise platform with automated rate optimization, doorstep pickup, 0 hidden surcharges, and instant WhatsApp tracking alerts.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-5 font-extrabold text-slate-900 text-sm flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span>How does the AI Smart Courier Recommendation Engine work?</span>
+                        <span id="faq-icon-2" class="text-blue-600 font-black text-lg">+</span>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                        When you create a shipment, our AI algorithm evaluates live pricing, historical SLA performance, pincode reachability, and hub congestion to highlight the Best Value, Fastest Air, and AI Recommended courier in real-time.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-5 font-extrabold text-slate-900 text-sm flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span>What are the COD remittance terms?</span>
+                        <span id="faq-icon-3" class="text-blue-600 font-black text-lg">+</span>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                        We offer fast daily COD remittance directly into your bank account with complete automated reconciliation ledgers, protecting your e-commerce cash flow.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(4)" class="w-full text-left p-5 font-extrabold text-slate-900 text-sm flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span>How does KDS Postal Service cut NDR & RTO losses?</span>
+                        <span id="faq-icon-4" class="text-blue-600 font-black text-lg">+</span>
+                    </button>
+                    <div id="faq-ans-4" class="hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                        Our integrated NDR workflow dispatches instant WhatsApp verification messages to buyers upon failed delivery attempts, allowing them to re-schedule or update address in 1 click—cutting RTO rates by up to 40%.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(5)" class="w-full text-left p-5 font-extrabold text-slate-900 text-sm flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span>Can enterprises get custom shipping contracts?</span>
+                        <span id="faq-icon-5" class="text-blue-600 font-black text-lg">+</span>
+                    </button>
+                    <div id="faq-ans-5" class="hidden p-5 pt-0 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                        Yes! High-volume e-commerce brands and logistics resellers can get customized volume pricing matrices, custom API integrations, and dedicated account managers.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 7.5 STICKY BOTTOM-RIGHT LIVE TICKER BADGE -->
+    <div id="sticky-bottom-badge" class="fixed bottom-4 right-4 z-40 bg-white border border-sky-200 rounded-full px-4 py-2 shadow-2xl flex items-center gap-3 animate-bounce">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+        <span class="text-xs font-extrabold text-slate-800">
+            ⚡ AWB #BLUEDART4920 delivered in 18 hours to Bengaluru...
+        </span>
+        <button onclick="document.getElementById('sticky-bottom-badge').style.display='none'" class="text-slate-400 hover:text-slate-700 font-bold text-xs ml-1">✕</button>
+    </div>
+
+
+    <!-- 8. PUBLIC FOOTER (NO LOGIN / SIGNUP LINKS) -->
+    <footer id="footer" class="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800 text-xs">
+                
+                <!-- Col 1 -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white font-black flex items-center justify-center text-xs">KDS</div>
+                        <span class="text-lg font-black text-white">KDS <span class="text-blue-500">Postal</span> Service</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Enterprise Multi-Courier platform connecting 12+ top shipping networks across 29,000+ pincodes in India.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Quick Navigation</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#home" class="hover:text-white">Home Overview</a></li>
+                        <li><a href="#why-choose-us" class="hover:text-white">Why Businesses Choose Us</a></li>
+                        <li><a href="#calculator" class="hover:text-white">Rate & Savings Calculator</a></li>
+                        <li><a href="#pincode" class="hover:text-white">Pincode Serviceability</a></li>
+                        <li><a href="#carriers" class="hover:text-white">Carrier Partners</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Shipping Solutions</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#calculator" class="hover:text-white">Express Air Shipping</a></li>
+                        <li><a href="#calculator" class="hover:text-white">Surface Heavy Freight</a></li>
+                        <li><a href="#calculator" class="hover:text-white">Hyperlocal Courier</a></li>
+                        <li><a href="#calculator" class="hover:text-white">COD Remittance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Support Contact</h4>
+                    <div class="p-3 rounded-xl bg-slate-800 text-slate-300 space-y-1">
+                        <div>📞 Phone: +91 92161 11156</div>
+                        <div>✉️ Email: support@kdspostalservice.com</div>
+                        <div>📍 Office: Chandigarh Hub, India</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+                <div>© 2026 KDS Postal Service. All rights reserved.</div>
+                <div class="flex gap-4">
+                    <a href="#home" class="hover:text-slate-400">Privacy Policy</a>
+                    <a href="#home" class="hover:text-slate-400">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- 9. INTERACTIVE AWB TRACKING TIMELINE DRAWER / MODAL -->
+    <div id="tracking-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex justify-end transition-all">
+        <div class="w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between overflow-y-auto p-6 space-y-6">
+            
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        <h3 class="text-base font-black text-slate-900">Shipment Timeline Drawer</h3>
+                    </div>
+                    <button onclick="closeTrackingModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center">✕</button>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span id="modal-awb" class="font-black text-blue-900 text-sm font-mono">DELHI987654</span>
+                        <span id="modal-status" class="text-xs font-extrabold bg-blue-600 text-white px-2.5 py-0.5 rounded-full">In Transit</span>
+                    </div>
+                    <div id="modal-courier" class="text-xs font-bold text-slate-700">Delhivery Express Direct</div>
+                    <div class="text-xs text-slate-600 flex justify-between border-t border-blue-200/60 pt-2 mt-1">
+                        <span>Route: <strong id="modal-route">Delhi ➔ Mumbai</strong></span>
+                        <span>ETA: <strong id="modal-eta" class="text-emerald-700">Tomorrow by 2 PM</strong></span>
+                    </div>
+                </div>
+
+                <!-- Timeline Steps -->
+                <div class="space-y-4 pt-2">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-400">Tracking Event Log</h4>
+                    <div id="modal-timeline-steps" class="space-y-4 relative pl-4 border-l-2 border-slate-200">
+                        <!-- Step items populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeTrackingModal()" class="w-full py-3 rounded-xl font-extrabold text-white bg-slate-900 hover:bg-slate-800 text-sm shadow-md">
+                Close Tracking Drawer
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Ticker Messages Rotation
+        const tickerMessages = [
+            "⚡ AWB #DELHI987612 booked from Delhi ➔ Mumbai via Delhivery Air • 2 mins ago",
+            "🎉 Merchant #4812 just saved ₹4,200 today using AI Smart Rate Allocation",
+            "🚚 AWB #BLUEDART4920 delivered in 18 hours to Bengaluru • On-Time SLA 99.4%",
+            "💰 COD Remittance payout batch ₹1,42,000 processed to Merchant Accounts (T+1)"
+        ];
+        let tickerIdx = 0;
+        setInterval(() => {
+            tickerIdx = (tickerIdx + 1) % tickerMessages.length;
+            const el = document.getElementById('ticker-text');
+            if (el) el.innerText = tickerMessages[tickerIdx];
+        }, 4500);
+
+        // Mobile Menu Toggle & Auto-Close on Nav
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openIcon = document.getElementById('open-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    openIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    openIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            });
+
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    openIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+
+        // Track Form Search
+        const trackForm = document.getElementById('track-form');
+        if (trackForm) {
+            trackForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const inputEl = document.getElementById('track-input');
+                const val = (inputEl && inputEl.value.trim().toUpperCase()) || 'DELHI987654';
+                openTrackingModal(val);
+            });
+        }
+
+        function setDemoAwb(awb) {
+            const inputEl = document.getElementById('track-input');
+            if (inputEl) inputEl.value = awb;
+            openTrackingModal(awb);
+        }
+
+        function openTrackingModal(awb) {
+            const modalAwb = document.getElementById('modal-awb');
+            if (modalAwb) modalAwb.innerText = awb;
+            const isBlue = awb.includes('BLUE');
+            const isShadow = awb.includes('SHADOW');
+            const isDelivered = awb.includes('DELIVERED') || awb.includes('DELVD');
+
+            const courierEl = document.getElementById('modal-courier');
+            if (courierEl) courierEl.innerText = isBlue ? 'Blue Dart Priority Air' : isShadow ? 'Shadowfax Local' : 'Delhivery Direct Air';
+            
+            const statusEl = document.getElementById('modal-status');
+            if (statusEl) statusEl.innerText = isDelivered ? 'Delivered' : 'In Transit';
+
+            const etaEl = document.getElementById('modal-eta');
+            if (etaEl) etaEl.innerText = isDelivered ? 'Delivered Today 11:20 AM' : 'Expected Tomorrow by 2:00 PM';
+
+            const steps = [
+                { title: 'Shipment Registered & AWB Created', time: 'Yesterday, 04:30 PM', done: true },
+                { title: 'Picked Up by Courier Agent', time: 'Yesterday, 07:15 PM', done: true },
+                { title: 'Arrived at Central Sort Facility Hub', time: 'Yesterday, 10:45 PM', done: true },
+                { title: 'In Transit on Express Cargo', time: 'Today, 06:00 AM', done: true },
+                { title: 'Out for Delivery to Recipient', time: isDelivered ? 'Today 10:15 AM' : 'Pending', done: isDelivered },
+                { title: 'Delivered to Recipient Doorstep', time: isDelivered ? 'Today 11:20 AM' : 'Pending', done: isDelivered }
+            ];
+
+            const stepsContainer = document.getElementById('modal-timeline-steps');
+            if (stepsContainer) {
+                stepsContainer.innerHTML = steps.map(s => `
+                    <div class="relative pl-3">
+                        <span class="absolute -left-[23px] top-0.5 w-3.5 h-3.5 rounded-full ${s.done ? 'bg-emerald-500 text-white' : 'bg-slate-300'} flex items-center justify-center text-[9px] font-bold">
+                            ${s.done ? '✓' : ''}
+                        </span>
+                        <div class="text-xs font-bold ${s.done ? 'text-slate-900' : 'text-slate-400'}">${s.title}</div>
+                        <div class="text-[10px] text-slate-500">${s.time}</div>
+                    </div>
+                `).join('');
+            }
+
+            const modal = document.getElementById('tracking-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeTrackingModal() {
+            const modal = document.getElementById('tracking-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // Calculator Logic
+        let currentPayMode = 'prepaid';
+        function switchCalcTab(tab) {
+            const ratesBtn = document.getElementById('tab-rates-btn');
+            const savingsBtn = document.getElementById('tab-savings-btn');
+            const ratesContent = document.getElementById('tab-rates-content');
+            const savingsContent = document.getElementById('tab-savings-content');
+
+            if (tab === 'rates') {
+                if (ratesBtn) ratesBtn.className = "px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all bg-white text-blue-600 shadow-md";
+                if (savingsBtn) savingsBtn.className = "px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all text-slate-600 hover:text-slate-900";
+                if (ratesContent) ratesContent.classList.remove('hidden');
+                if (savingsContent) savingsContent.classList.add('hidden');
+            } else {
+                if (savingsBtn) savingsBtn.className = "px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all bg-white text-blue-600 shadow-md";
+                if (ratesBtn) ratesBtn.className = "px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all text-slate-600 hover:text-slate-900";
+                if (savingsContent) savingsContent.classList.remove('hidden');
+                if (ratesContent) ratesContent.classList.add('hidden');
+            }
+        }
+
+        function setPayMode(mode) {
+            currentPayMode = mode;
+            const prepaidBtn = document.getElementById('pay-prepaid');
+            const codBtn = document.getElementById('pay-cod');
+            if (mode === 'prepaid') {
+                if (prepaidBtn) prepaidBtn.className = "py-2 rounded-xl text-xs font-extrabold border bg-blue-600 text-white border-blue-600";
+                if (codBtn) codBtn.className = "py-2 rounded-xl text-xs font-extrabold border bg-white text-slate-700 border-slate-300";
+            } else {
+                if (codBtn) codBtn.className = "py-2 rounded-xl text-xs font-extrabold border bg-blue-600 text-white border-blue-600";
+                if (prepaidBtn) prepaidBtn.className = "py-2 rounded-xl text-xs font-extrabold border bg-white text-slate-700 border-slate-300";
+            }
+            updateLiveRates();
+        }
+
+        function updateLiveRates() {
+            const weightInput = document.getElementById('calc-weight');
+            const weight = weightInput ? (parseFloat(weightInput.value) || 0.5) : 0.5;
+            const weightVal = document.getElementById('weight-val');
+            if (weightVal) weightVal.innerText = weight + " kg";
+            const extraCod = currentPayMode === 'cod' ? 15 : 0;
+
+            const pickupInput = document.getElementById('calc-pickup');
+            const destInput = document.getElementById('calc-dest');
+            const pickup = pickupInput ? pickupInput.value.trim() : '110001';
+            const dest = destInput ? destInput.value.trim() : '400001';
+            const isSameZone = pickup.length > 0 && dest.length > 0 && pickup.charAt(0) === dest.charAt(0);
+            const zoneMultiplier = isSameZone ? 0.85 : 1.0;
+
+            const base = weight * 40 * zoneMultiplier;
+            const rDel = document.getElementById('rate-delhivery');
+            const rBlue = document.getElementById('rate-bluedart');
+            const rXp = document.getElementById('rate-xpressbees');
+            const rShad = document.getElementById('rate-shadowfax');
+
+            if (rDel) rDel.innerText = "₹ " + (base + 25 + extraCod).toFixed(2);
+            if (rBlue) rBlue.innerText = "₹ " + (base + 48 + extraCod).toFixed(2);
+            if (rXp) rXp.innerText = "₹ " + (base + 18 + extraCod).toFixed(2);
+            if (rShad) rShad.innerText = "₹ " + (base + 22 + extraCod).toFixed(2);
+        }
+
+        function updateSavings() {
+            const slider = document.getElementById('vol-slider');
+            const vol = slider ? (parseInt(slider.value) || 1500) : 1500;
+            const volCount = document.getElementById('vol-count');
+            if (volCount) volCount.innerText = vol.toLocaleString('en-IN') + " Packages";
+            
+            const mSave = Math.round(vol * 18.5);
+            const aSave = mSave * 12;
+
+            const mVal = document.getElementById('monthly-savings-val');
+            const aVal = document.getElementById('annual-savings-val');
+            if (mVal) mVal.innerText = "₹ " + mSave.toLocaleString('en-IN');
+            if (aVal) aVal.innerText = "₹ " + aSave.toLocaleString('en-IN');
+        }
+
+        // Pincode Search Logic
+        const pincodeForm = document.getElementById('pincode-form');
+        if (pincodeForm) {
+            pincodeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const pinInput = document.getElementById('pincode-input');
+                const pin = (pinInput && pinInput.value.trim()) || '110001';
+                const city = pin.startsWith('4') ? 'Mumbai' : pin.startsWith('5') ? 'Bengaluru' : pin.startsWith('7') ? 'Kolkata' : pin.startsWith('6') ? 'Chennai' : pin.startsWith('3') ? 'Ahmedabad' : 'New Delhi';
+                const state = pin.startsWith('4') ? 'Maharashtra' : pin.startsWith('5') ? 'Karnataka' : pin.startsWith('7') ? 'West Bengal' : pin.startsWith('6') ? 'Tamil Nadu' : pin.startsWith('3') ? 'Gujarat' : 'Delhi';
+
+                const locEl = document.getElementById('pin-location');
+                const stateEl = document.getElementById('pin-state');
+                const statusEl = document.getElementById('pin-status');
+                const codEl = document.getElementById('pin-cod');
+                const airEl = document.getElementById('pin-air');
+                const surfEl = document.getElementById('pin-surface');
+
+                if (locEl) locEl.innerText = `${city} (Pincode: ${pin})`;
+                if (stateEl) stateEl.innerText = `State: ${state}`;
+                if (statusEl) statusEl.innerText = '✓ Serviceable (29,000+ Reach)';
+                if (codEl) codEl.innerText = 'Active (T+1 Remittance)';
+                if (airEl) airEl.innerText = '24-36 Hours';
+                if (surfEl) surfEl.innerText = '48-72 Hours';
+            });
+        }
+
+        // Carriers Showcase Logic
+        const carriersData = [
+            { name: 'Delhivery Direct', category: 'air', tag: 'Pan-India Surface & Air', sla: '24-48 Hrs', reach: '29,000+ Pincodes', color: 'bg-red-600' },
+            { name: 'Bluedart Air', category: 'air', tag: 'Fastest Priority SLA', sla: '24 Hrs Priority', reach: '28,500+ Pincodes', color: 'bg-blue-600' },
+            { name: 'Xpressbees Express', category: 'surface', tag: 'Lowest Rate Matrix', sla: '48-72 Hrs', reach: '27,000+ Pincodes', color: 'bg-purple-600' },
+            { name: 'Shadowfax Local', category: 'local', tag: 'Hyperlocal Delivery', sla: 'Same Day / 4 Hrs', reach: 'Metros & Tier 1', color: 'bg-emerald-600' },
+            { name: 'Ecom Express', category: 'surface', tag: 'E-commerce Specialist', sla: '48 Hrs', reach: '27,500+ Pincodes', color: 'bg-amber-600' },
+            { name: 'DTDC Courier', category: 'air', tag: 'National Air Cargo', sla: '24-48 Hrs', reach: '29,000+ Pincodes', color: 'bg-sky-600' },
+            { name: 'FedEx Express', category: 'air', tag: 'Global & Domestic Air', sla: '24 Hrs', reach: 'Worldwide', color: 'bg-indigo-600' },
+            { name: 'DHL International', category: 'air', tag: 'Worldwide Express', sla: '24-48 Hrs Global', reach: '220+ Countries', color: 'bg-rose-600' }
+        ];
+
+        function renderCarriers(filter) {
+            const grid = document.getElementById('carrier-grid');
+            if (!grid) return;
+            const items = filter === 'all' ? carriersData : carriersData.filter(c => c.category === filter);
+            grid.innerHTML = items.map(c => `
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg ${c.color} text-white font-black flex items-center justify-center text-xs">${c.name.substring(0, 2)}</span>
+                        <h4 class="text-sm font-extrabold text-slate-900">${c.name}</h4>
+                    </div>
+                    <span class="inline-block text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">${c.tag}</span>
+                    <div class="text-xs text-slate-500 space-y-1 pt-1 border-t border-slate-100">
+                        <div>SLA: <strong class="text-slate-800 font-bold">${c.sla}</strong></div>
+                        <div>Reach: <strong class="text-slate-800 font-bold">${c.reach}</strong></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCarriers(cat, btn) {
+            renderCarriers(cat);
+            const buttons = document.querySelectorAll('.carrier-filter-btn');
+            buttons.forEach(b => {
+                b.className = 'carrier-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all';
+            });
+            if (btn) {
+                btn.className = 'carrier-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-slate-900 text-white shadow-md transition-all';
+            }
+        }
+        renderCarriers('all');
+
+        // FAQ Toggle Logic
+        function toggleFaq(num) {
+            const ans = document.getElementById('faq-ans-' + num);
+            const icon = document.getElementById('faq-icon-' + num);
+            if (!ans) return;
+            const isHidden = ans.classList.contains('hidden');
+            if (isHidden) {
+                ans.classList.remove('hidden');
+                if (icon) icon.innerText = '-';
+            } else {
+                ans.classList.add('hidden');
+                if (icon) icon.innerText = '+';
+            }
+        }
+    </script>
+
+    <!-- Floating KDS AI Chatbot & WhatsApp Hybrid Widget -->
+    <div id="kds-chat-widget-container" class="fixed bottom-6 right-6 z-50 font-sans">
+        
+        <!-- Floating Trigger Button -->
+        <button id="kds-chat-toggle-btn" onclick="toggleKdsChatWidget()" class="relative group bg-slate-900 hover:bg-slate-800 text-white rounded-full p-4 shadow-2xl flex items-center gap-3 border border-slate-700 transition-all duration-300 transform hover:scale-105">
+            <!-- Live Online Indicator Pulse -->
+            <span class="absolute -top-1 -right-1 flex h-4 w-4">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white"></span>
+            </span>
+
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🤖</span>
+                <span class="w-px h-6 bg-slate-700"></span>
+                <span class="text-xl text-emerald-400">💬</span>
+            </div>
+            <span class="hidden md:inline text-xs font-extrabold tracking-wide pr-1">Need Help? AI Chat & WhatsApp</span>
+        </button>
+
+        <!-- Chat Modal Window -->
+        <div id="kds-chat-modal" class="hidden absolute bottom-16 right-0 w-[92vw] max-w-[390px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-300" style="height: 540px;">
+            
+            <!-- Header with Tabs & Close -->
+            <div class="bg-slate-900 text-white p-4 pb-3 flex flex-col justify-between shrink-0">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-lg shadow-md">
+                            🤖
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-black text-white flex items-center gap-2">
+                                KDS Support Assistant
+                                <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">Online</span>
+                            </h3>
+                            <p class="text-[11px] text-slate-400 font-medium">Multilingual AI & WhatsApp Live Support</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleKdsChatWidget()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center font-bold text-base transition-colors">✕</button>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div class="grid grid-cols-2 bg-slate-800 p-1 rounded-xl text-xs font-extrabold gap-1">
+                    <button id="tab-ai-btn" onclick="switchKdsTab('ai')" class="py-2 rounded-lg bg-blue-600 text-white shadow-sm flex items-center justify-center gap-1.5 transition-all">
+                        🤖 AI Bot
+                    </button>
+                    <button id="tab-wa-btn" onclick="switchKdsTab('wa')" class="py-2 rounded-lg text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition-all">
+                        💬 WhatsApp Live
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 1: AI Chatbot Container -->
+            <div id="kds-tab-ai" class="flex-1 flex flex-col overflow-hidden bg-slate-50">
+                <!-- Messages Scroll Area -->
+                <div id="kds-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs">
+                    
+                    <!-- Bot Welcome Message -->
+                    <div class="flex items-start gap-2.5">
+                        <div class="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">🤖</div>
+                        <div class="bg-white rounded-2xl rounded-tl-none p-3.5 shadow-sm border border-slate-200 text-slate-800 leading-relaxed max-w-[88%] space-y-2">
+                            <p class="font-semibold text-slate-900">Namaste! 🙏 Welcome to KDS Postal Service Support.</p>
+                            <p class="text-slate-600">Main aapki kaise sahayata kar sakta hoon? Aap niche diye gaye quick options chun sakte hain ya direct sawaal pooch sakte hain (Hindi, English ya Hinglish me)!</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Action Chips -->
+                    <div class="flex flex-wrap gap-1.5 pl-9" id="kds-quick-chips">
+                        <button onclick="sendKdsChip('Track shipment status')" class="bg-white hover:bg-blue-50 text-blue-700 border border-blue-200 font-bold px-3 py-1.5 rounded-full shadow-2xs transition-all hover:scale-95 text-[11px] flex items-center gap-1">📦 Track Order</button>
+                        <button onclick="sendKdsChip('Shipping rates kitne hai')" class="bg-white hover:bg-blue-50 text-blue-700 border border-blue-200 font-bold px-3 py-1.5 rounded-full shadow-2xs transition-all hover:scale-95 text-[11px] flex items-center gap-1">💰 Rates & Pricing</button>
+                        <button onclick="sendKdsChip('COD remittance kab milega')" class="bg-white hover:bg-blue-50 text-blue-700 border border-blue-200 font-bold px-3 py-1.5 rounded-full shadow-2xs transition-all hover:scale-95 text-[11px] flex items-center gap-1">⚡ COD Remittance</button>
+                        <button onclick="sendKdsChip('Seller account kaise banaye')" class="bg-white hover:bg-blue-50 text-blue-700 border border-blue-200 font-bold px-3 py-1.5 rounded-full shadow-2xs transition-all hover:scale-95 text-[11px] flex items-center gap-1">🤝 New Seller Join</button>
+                        <button onclick="sendKdsChip('Pincode serviceability check')" class="bg-white hover:bg-blue-50 text-blue-700 border border-blue-200 font-bold px-3 py-1.5 rounded-full shadow-2xs transition-all hover:scale-95 text-[11px] flex items-center gap-1">📍 29,000+ Pincodes</button>
+                    </div>
+
+                </div>
+
+                <!-- Typing Indicator (Hidden by default) -->
+                <div id="kds-bot-typing" class="hidden px-4 py-2 text-[11px] font-semibold text-slate-500 flex items-center gap-2 bg-slate-50 border-t border-slate-100">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></span>
+                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                    <span>KDS AI is typing...</span>
+                </div>
+
+                <!-- Chat Input Area -->
+                <form id="kds-chat-form" onsubmit="handleKdsChatSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex items-center gap-2 shrink-0">
+                    <input id="kds-chat-input" type="text" placeholder="Type in Hindi, English, Hinglish..." class="flex-1 bg-slate-100 focus:bg-white text-slate-900 placeholder-slate-400 text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 focus:outline-none transition-all" autocomplete="off" />
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-4 py-2.5 font-bold text-xs shadow-md transition-all flex items-center gap-1">
+                        Send 🚀
+                    </button>
+                </form>
+            </div>
+
+            <!-- TAB 2: WhatsApp Direct Support Container (Hidden by default) -->
+            <div id="kds-tab-wa" class="hidden flex-1 flex flex-col justify-between p-5 bg-gradient-to-b from-emerald-50/50 to-white overflow-y-auto">
+                <div class="space-y-4 text-center py-2">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto shadow-inner border border-emerald-200">
+                        💬
+                    </div>
+                    <div>
+                        <h4 class="text-base font-black text-slate-900">WhatsApp Live Desk</h4>
+                        <p class="text-xs text-slate-600 font-medium mt-1">Connect with our dedicated logistics account manager instantly on WhatsApp!</p>
+                    </div>
+
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm text-left space-y-2 text-xs">
+                        <div class="flex items-center gap-2 text-emerald-700 font-extrabold text-[11px]">
+                            <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span> Support Hours: 24/7 Priority Support
+                        </div>
+                        <p class="text-slate-600 leading-snug">Average response time is under <strong>2 minutes</strong>. Get custom shipping quotes, onboarding assistance, or priority dispute resolutions.</p>
+                    </div>
+
+                    <div class="space-y-2 pt-1 text-left">
+                        <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Quick Start Messages:</span>
+                        <a href="https://wa.me/919216111156?text=Hi%20KDS%20Support,%20I%20want%20to%20create%20a%20new%20Seller%20Account" target="_blank" class="block bg-white hover:bg-emerald-50 border border-slate-200 text-slate-800 font-bold p-2.5 rounded-xl text-xs hover:border-emerald-400 transition-all flex items-center justify-between">
+                            <span>🤝 Create New Seller Account</span>
+                            <span class="text-emerald-600 font-black">➔</span>
+                        </a>
+                        <a href="https://wa.me/919216111156?text=Hi%20KDS%20Support,%20I%20need%20discounted%20bulk%20shipping%20rates" target="_blank" class="block bg-white hover:bg-emerald-50 border border-slate-200 text-slate-800 font-bold p-2.5 rounded-xl text-xs hover:border-emerald-400 transition-all flex items-center justify-between">
+                            <span>💰 Request Bulk Shipping Rates</span>
+                            <span class="text-emerald-600 font-black">➔</span>
+                        </a>
+                        <a href="https://wa.me/919216111156?text=Hi%20KDS%20Support,%20I%20have%20an%20issue%20with%20my%20shipment/AWB" target="_blank" class="block bg-white hover:bg-emerald-50 border border-slate-200 text-slate-800 font-bold p-2.5 rounded-xl text-xs hover:border-emerald-400 transition-all flex items-center justify-between">
+                            <span>📦 Shipment & AWB Support</span>
+                            <span class="text-emerald-600 font-black">➔</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Direct Launch Button -->
+                <a href="https://wa.me/919216111156?text=Hi%20KDS%20Postal%20Service,%20I%20need%20assistance" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm py-3.5 px-4 rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02]">
+                    <span class="text-lg">💬</span> Open WhatsApp Chat Now
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Chatbot Widget State & Handlers
+        function toggleKdsChatWidget() {
+            const modal = document.getElementById('kds-chat-modal');
+            if (modal) {
+                modal.classList.toggle('hidden');
+            }
+        }
+
+        function switchKdsTab(tab) {
+            const tabAi = document.getElementById('kds-tab-ai');
+            const tabWa = document.getElementById('kds-tab-wa');
+            const btnAi = document.getElementById('tab-ai-btn');
+            const btnWa = document.getElementById('tab-wa-btn');
+
+            if (tab === 'ai') {
+                tabAi.classList.remove('hidden');
+                tabWa.classList.add('hidden');
+                btnAi.className = 'py-2 rounded-lg bg-blue-600 text-white shadow-sm flex items-center justify-center gap-1.5 transition-all';
+                btnWa.className = 'py-2 rounded-lg text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition-all';
+            } else {
+                tabAi.classList.add('hidden');
+                tabWa.classList.remove('hidden');
+                btnWa.className = 'py-2 rounded-lg bg-emerald-600 text-white shadow-sm flex items-center justify-center gap-1.5 transition-all';
+                btnAi.className = 'py-2 rounded-lg text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition-all';
+            }
+        }
+
+        function appendKdsUserMessage(msgText) {
+            const container = document.getElementById('kds-chat-messages');
+            if (!container) return;
+            
+            const msgHtml = `
+                <div class="flex items-start justify-end gap-2">
+                    <div class="bg-blue-600 text-white rounded-2xl rounded-tr-none p-3 shadow-sm leading-relaxed max-w-[85%] font-medium">
+                        ${escapeHtml(msgText)}
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', msgHtml);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendKdsBotMessage(botHtml) {
+            const container = document.getElementById('kds-chat-messages');
+            if (!container) return;
+
+            const msgHtml = `
+                <div class="flex items-start gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">🤖</div>
+                    <div class="bg-white rounded-2xl rounded-tl-none p-3.5 shadow-sm border border-slate-200 text-slate-800 leading-relaxed max-w-[88%] space-y-2">
+                        ${botHtml}
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', msgHtml);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function handleKdsChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('kds-chat-input');
+            if (!input || !input.value.trim()) return;
+
+            const userMsg = input.value.trim();
+            input.value = '';
+
+            appendKdsUserMessage(userMsg);
+
+            // Show typing indicator
+            const typing = document.getElementById('kds-bot-typing');
+            if (typing) typing.classList.remove('hidden');
+
+            setTimeout(() => {
+                if (typing) typing.classList.add('hidden');
+                const reply = getKdsAiResponse(userMsg);
+                appendKdsBotMessage(reply);
+            }, 600);
+        }
+
+        function sendKdsChip(text) {
+            const input = document.getElementById('kds-chat-input');
+            if (input) {
+                input.value = text;
+                handleKdsChatSubmit(new Event('submit'));
+            }
+        }
+
+        function getKdsAiResponse(msg) {
+            const text = msg.toLowerCase().trim();
+
+            if (text.includes('track') || text.includes('order') || text.includes('awb') || text.includes('status') || text.includes('kahan') || text.includes('location')) {
+                return `📦 <strong>Shipment Tracking Help:</strong><br><br>
+                Aap apna 10-12 digit <strong>AWB / Tracking Number</strong> upar diye gaye Top Header Bar me daal kar <strong>"Track Order"</strong> par click karein!<br><br>
+                Deep tracking details me 12+ Courier Partners (Delhivery, BlueDart, Xpressbees, DTDC) ke live scans, current city, aur estimated delivery date dikh jayegi.`;
+            }
+
+            if (text.includes('rate') || text.includes('price') || text.includes('cost') || text.includes('charge') || text.includes('kitna') || text.includes('paise') || text.includes('cheap')) {
+                return `💰 <strong>KDS Shipping Rates & Matrix:</strong><br><br>
+                • <strong>Domestic Surface:</strong> Starting at just <strong>₹18 / 500g</strong><br>
+                • <strong>Air Priority Cargo:</strong> Starting at <strong>₹35 / 500g</strong><br>
+                • <strong>Hyperlocal Same-Day:</strong> Starting at <strong>₹30</strong><br><br>
+                Exact pricing calculate karne ke liye hamare website ke <strong>"Rate Calculator"</strong> section par jayein ya WhatsApp support se sample rate chart maangein!`;
+            }
+
+            if (text.includes('cod') || text.includes('remittance') || text.includes('payout') || text.includes('payment') || text.includes('kab milega') || text.includes('bank') || text.includes('money')) {
+                return `⚡ <strong>T+1 Daily COD Remittance Policy:</strong><br><br>
+                KDS Postal Service par aapko milta hai <strong>Daily COD Remittance (T+1)</strong>.<br>
+                Courier dwara Cash-on-Delivery collection ke 24 ghante ke andar aapka amount direct aapke linked Bank Account me auto-credit ho jata hai! 💸`;
+            }
+
+            if (text.includes('pincode') || text.includes('pin code') || text.includes('reach') || text.includes('city') || text.includes('area') || text.includes('deliver') || text.includes('serviceable')) {
+                return `📍 <strong>Pan-India Serviceability & Coverage:</strong><br><br>
+                KDS Postal Service India ke <strong>29,000+ Pincodes</strong> cover karta hai.<br>
+                Metros, Tier 1, Tier 2, Tier 3, aur North-East & Rural areas me bhi 100% COD & Prepaid delivery available hai!`;
+            }
+
+            if (text.includes('courier') || text.includes('partner') || text.includes('delhivery') || text.includes('bluedart') || text.includes('xpressbees') || text.includes('dtdc') || text.includes('fedex')) {
+                return `🚚 <strong>12+ Premium Courier Partners:</strong><br><br>
+                Ek hi KDS Dashboard se aap <strong>Delhivery, BlueDart, Xpressbees, Shadowfax, DTDC, Ecom Express, Ekart, & FedEx</strong> me se best automated courier choose kar sakte hain!`;
+            }
+
+            if (text.includes('seller') || text.includes('register') || text.includes('sign up') || text.includes('login') || text.includes('account') || text.includes('join') || text.includes('kaise banaye')) {
+                return `🤝 <strong>Join KDS as a Seller:</strong><br><br>
+                Seller Account banana 100% <strong>FREE & Instant</strong> hai!<br>
+                1. Top Right me <strong>"Login / Register"</strong> button par click karein.<br>
+                2. Business details & KYC fill karein.<br>
+                3. Instant ₹100 Free Shipping Credits paayein aur bhejye apna pehla parcel! 🎁`;
+            }
+
+            if (text.includes('contact') || text.includes('support') || text.includes('help') || text.includes('phone') || text.includes('number') || text.includes('call') || text.includes('baat')) {
+                return `💬 <strong>KDS Support Desk:</strong><br><br>
+                Aap hamari team se 24x7 connect kar sakte hain:<br>
+                • <strong>WhatsApp Direct:</strong> Is Chat Box me top <strong>"WhatsApp Live"</strong> tab par click karein!<br>
+                • <strong>Phone / Helpline:</strong> +91 92161 11156<br>
+                • <strong>Email:</strong> support@kdspostalservice.com`;
+            }
+
+            if (text.includes('hi') || text.includes('hello') || text.includes('hey') || text.includes('namaste') || text.includes('pranam') || text.includes('hlo') || text.includes('hy')) {
+                return `Namaste! 🙏 Main KDS AI Assistant hoon.<br><br>Main aapki shipping, order tracking, COD payout, aur rates se judi har query me sahayata kar sakta hoon. Aap Hindi, English ya Hinglish me kuch bhi pooch sakte hain!`;
+            }
+
+            return `Aapka query humne note kar liya hai! 🤖<br><br>
+            KDS Postal Service se jude kisi bhi vishesh sawaal (Track Order, Shipping Rates, Pincode Check, COD Payouts) ke liye aap upar diye chips click kar sakte hain, ya hamari <strong>WhatsApp Live Desk</strong> tab par jaakar direct support agent se baat kar sakte hain! 💬`;
+        }
+    </script>
+</body>
+</html>
